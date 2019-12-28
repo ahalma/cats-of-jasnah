@@ -2,6 +2,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Cats of Jasnah. Teach your 4-year-old logic</title>
+	<meta charset="utf-8">
 	<style>
 		body {
 			background: #FFDDEE;
@@ -20,7 +21,7 @@
 			cursor: pointer;
 			padding: 5px;
 		}
-		p {
+		.answerTip {
 			font-size: 22px;
 			margin: 0;
 			padding: 1em 0 0 0;
@@ -47,13 +48,13 @@
 			stroke: black;
 		}
 		.red .face {
-			fill:red
+			fill:#ff5858
 		}
 		.blue .face {
-			fill:#8888FF
+			fill:#b2ccff
 		}
 		.yellow .face {
-			fill:yellow
+			fill:#ffff73
 		}
 
 
@@ -116,12 +117,12 @@
 			display: none;
 			font-size: 0.5vw;
 		}
-		.number-bar .desc {
+		.number-bar .answerTip {
 			font-size: 14px;
 			opacity: 0.7;
 		}
 		.number-line {
-
+			margin-bottom: 20px;
 		}
 		.number-bar span {
 			cursor: pointer;
@@ -174,12 +175,13 @@
 	</style>
 </head>
 <body>
-<div class='back'>&larr;</div>
-<div class='forward'>&rarr;</div>
-<h1 onclick='window.location.reload()'>Cats of Jasnah</h1>
+
+<h1 class="title" onclick='window.location.reload()'>Cats of Jasnah</h1>
 
 <div class="level-display">
-	LEVEL: <span class='level-number'></span>
+	<div class='back'>&larr;</div>
+	<span class="level-message">LEVEL</span>: <span class='level-number'></span>
+	<div class='forward'>&rarr;</div>
 </div>
 
 <div class='number-bar no-select'>
@@ -195,12 +197,11 @@
 		<span data-number='8'>8</span>
 		<span data-number='9'>9</span>
 	</div>
-	<div class='desc'>
-		<br>
+	<div class="answerTip">
 		To answer questions, tap the numbers above or just use your keyboard.
 	</div>
 </div>
-<p></p>
+<p class="challenge"></p>
 
 <!--<style>#forkongithub a{background:#000;color:#fff;text-decoration:none;font-family:arial,sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover{background:#c11;color:#fff;}#forkongithub a::before,#forkongithub a::after{content:"";width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after{bottom:1px;top:auto;}@media screen and (min-width:800px){#forkongithub{position:absolute;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;z-index:9999;}#forkongithub a{width:200px;position:absolute;top:60px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.8);}}</style><span id="forkongithub"><a href="https://github.com/countable/cats-of-jasnah">Fork me on GitHub</a></span>-->
 
@@ -221,13 +222,13 @@
 </div>
 <br>
 <svg class='hidden' viewbox = "0 0 160 140">
-	<ellipse class='face' cx='70' cy='95' ry='45' rx='55' style='stroke:#ff88dd' />
+	<ellipse class='face' cx='70' cy='95' ry='45' rx='55' style='stroke-width:3px;stroke:#ff88dd' />
 	<ellipse cx="45" cy="90" rx="5" ry="7" fill="black"/>
 	<ellipse cx="95" cy="90" rx="5" ry="7" stroke="black" fill="black"/>
 
 	<g id="whiskers" class="whiskers">
-		<line x1="105" y1="100" x2="135" y2="90" style="stroke: black;"/>
-		<line x1="105" y1="100" x2="135" y2="110" style="stroke: black;"/>
+		<line x1="105" y1="100" x2="135" y2="93" style="stroke: black;"/>
+		<line x1="105" y1="105" x2="135" y2="112" style="stroke: black;"/>
 	</g>
 	<use xlink:href="#whiskers" transform="scale(-1 1) translate(-140 0)"/>
 	<!-- ears -->
@@ -255,6 +256,105 @@
 <script  src="js/jquery-3.4.1.slim.js"></script>
 
 <script>
+	const messages = {
+		'en' : {
+			'title': 'Cats of Jasnah',
+			'titleFull': 'Cats of Jasnah. Teach your 4-year-old logic',
+			'voice' : 'US English Female',
+			'answerTip' : 'To answer questions, tap the numbers above or just use your keyboard.',
+			'level' : 'level',
+			'level0' : '0. counting',
+			'level1' : '1. one category',
+			'level2' : '2. negation',
+			'level3' : '3. combination',
+			'level4' : '4. conjunction',
+			'level5' : '5. negation and conjunction',
+			'level6' : '6. triple combination',
+			'level7' : '7. triple conjunction',
+			'right' : 'That\'s right:',
+			'wrong' : 'Good try, but that\'s wrong.',
+
+			// Example: how many red cats are spinning and are not ducks?
+			'base': 'How many ADJECTIVES cats ADVERBS?',
+			'negate': 'not',
+			'and': 'and',
+			'areHere': 'are here',
+			// attribute: [adjective, adverb]
+			'red': ['_ red', 'are _ red'],
+			'blue': ['_ blue', 'are _ blue'],
+			'yellow': ['_ yellow', 'are _ yellow'],
+			'bouncing': ['_ bouncing', 'are _ bouncing'],
+			'spinning': ['_ spinning', 'are _ spinning'],
+			'ducks': ['_ duck', 'are _ ducks'],
+		},
+		'es' : {
+			'title': 'Gatos de Jasnah',
+			'titleFull': 'Gatos de Jasnah. Enseña lógica a tu niño de 4 años',
+			'voice' : 'Spanish Female',
+			'answerTip' : 'Elija un número arriba o use su teclado.',
+			'level' : 'level',
+			'level0' : '0. contando',
+			'level1' : '1. una categoría',
+			'level2' : '2. negación',
+			'level3' : '3. combinación',
+			'level4' : '4. conjunción',
+			'level5' : '5. negación y conjunción',
+			'level6' : '6. combinación triple',
+			'level7' : '7. triple conjunción',
+			'right' : 'Eso es correcto:',
+			'wrong' : 'Buen intento, pero eso está mal.',
+
+			// Example: ¿Cuántos gatos rojos están girando y no son patos?
+			'base': '¿Cuántos gatos ADJECTIVES ADVERBS?',
+			'negate': 'no',
+			'and': 'y',
+			'areHere': 'son aqui',
+			// attribute: [adjective, adverb]
+			'red': ['_ rojos', '_ son rojos'],
+			'blue': ['_ azules', '_ son azules'],
+			'yellow': ['_ amarillos', '_ son amarillos'],
+			'bouncing': ['_ saltarines', '_ están saltando'],
+			'spinning': ['_ giratorios', '_ están girando'],
+			'ducks': ['_ como los patos', '_ son patos?'],
+		},
+		'nl' : {
+			'title': 'Kattenlogica',
+			'titleFull': 'Kattenlogica. Leer je kleuter logica (fork of "Cats of Jasnah")',
+			'voice' : 'Dutch Female',
+			'answerTip' : 'Kies een nummer hierboven of gebruik je toetsenbord.',
+			'level' : 'level',
+			'level0' : '0. tellen',
+			'level1' : '1. één kenmerk',
+			'level2' : '2. ontkenning',
+			'level3' : '3. combinatie',
+			'level4' : '4. voegwoorden',
+			'level5' : '5. ontkenning en voegwoorden',
+			'level6' : '6. driedubbele combinaties',
+			'level7' : '7. driedubbele voegwoorden',
+			'right' : 'Dat is goed:',
+			'wrong' : 'Jammer, dat is fout.',
+
+			// Example: hoeveel rode katten draaien en zijn geen eendjes?
+			'base': 'Hoeveel ADJECTIVES katten ADVERBS?',
+			'negate': 'niet',
+			'and': 'en',
+			'areHere': 'zijn hier',
+			// attribute: [adjective, adverb]
+			'red': ['_ rode', 'zijn _ rood'],
+			'blue': ['_ blauwe', 'zijn _ blauw'],
+			'yellow': ['_ gele', 'zijn _ geel'],
+			'bouncing': ['_ springende', 'springen _'],
+			'spinning': ['_ draaiende', 'draaien _'],
+			'ducks': ['_ eenden', 'zijn _ eendjes'],
+		}
+	}
+
+	// Set language
+	let lang = new URL(window.location).searchParams.get("lang") || window.navigator.language.slice(0, 2);
+    if(!(lang in messages)){
+    	lang = 'en'
+	}
+	$("html").attr("lang", lang);
 
 	$(document).ready(() => {
 		const COLOR_ATTS = ['red', 'blue', 'yellow']
@@ -348,46 +448,45 @@
 		function speak(text, opts) {
 			opts = opts || {}
 			$("p").text(text)
-			responsiveVoice.speak(text, "US English Female", opts)
+			responsiveVoice.speak(text, messages[lang].voice, opts)
 		}
 
 		function make_cats() {
 			set_avail_atts()
 			permute_atts()
-			let text = "how many "
+			let text = messages[lang].base;
 			const keys = Object.keys(cur_atts)
 			const prefix_pos = get_level_num_adjectives(cur_level, keys)
 			const prefix_keys = keys.slice(0,prefix_pos)
 			if (prefix_keys.length) {
 				let prefix_words = []
 				for (let att in prefix_keys) {
-					prefix_words.push(
-							(cur_atts[prefix_keys[att]] ? '' : 'not-')
-							+ prefix_keys[att])
+					let word = messages[lang][prefix_keys[att]][0] // select adjective
+					let negate = !cur_atts[prefix_keys[att]]
+					prefix_words.push(negate ? word.replace(/_/, messages[lang].negate) : word.replace(/_/, ''))
 				}
-				text += prefix_words.join(", ") + " "
-				// ducks is just 'duck' when used as an adjective
-				text = text.replace("ducks", "duck")
+				text = text.replace(/ADJECTIVES/, prefix_words.join(", "))
+			} else {
+				text = text.replace(/ADJECTIVES ?/, "")
 			}
 			const postfix_keys = keys.slice(prefix_pos)
 			if (postfix_keys.length) {
-				text += "cats are "
-
 				let conjunctions = []
 				for (let att in postfix_keys) {
-					conjunctions.push(
-							(cur_atts[postfix_keys[att]] ? '' : 'not ')
-							+ postfix_keys[att])
+					let word = messages[lang][postfix_keys[att]][1] // select adverb
+					let negate = !cur_atts[postfix_keys[att]]
+					conjunctions.push(negate ? word.replace(/_/, messages[lang].negate) : word.replace(/_/, ''))
 				}
-				console.log(conjunctions)
-				text += conjunctions.join(" and are ")
+				text = text.replace(/ADVERBS/, conjunctions.join(" "+messages[lang].and+" "))
 			} else {
-				text += "cats are here"
+				text = text.replace(/ADVERBS/, messages[lang].areHere)
 			}
-			text += "?"
+			// fix spaces
+			text = text.replace(/  +/, ' ');
+			text = text.replace(/ \?/, '?');
+
 			clue = text;
 			speak(text)
-
 
 			$('svg:gt(0)').remove()
 			const num_cats = cats_for_level(cur_level);
@@ -403,7 +502,7 @@
 						})
 			}
 		}
-		
+
 		function submit(value) {
 			let answer = $('svg:visible').filter(function(svg){
 				let match = true
@@ -416,19 +515,30 @@
 
 			console.log('answer:', answer)
 			if (value === answer) {
-				speak("That's right, " + answer, {
+				speak(messages[lang].right + " " + answer +"!", {
 					onend: function(){
 						make_cats()
 					}})
 			} else {
-				speak("Good try, but that's wrong.", {
+				speak(messages[lang].wrong, {
 					onend: function() {
 						speak(clue)
 					}
 				})
 			}
 		}
-		
+
+		// Internationalization: set messages
+		$('.answerTip').text(messages[lang].answerTip)
+		$('.title').text(messages[lang].title)
+		$('title').text(messages[lang].titleFull)
+		$('.level-message').text(messages[lang].level)
+
+		$('li[data-level]').each(function () {
+			let level = $(this).data('level');
+			$(this).text(messages[lang]['level'+level]);
+		})
+
 		// Bind events
 
 		$('body').keyup(function(e){
@@ -447,7 +557,7 @@
 		$('.back').click(() => set_level(Math.max(0,cur_level-1)))
 		$('.forward').click(() => set_level(Math.min(7,cur_level+1)))
 
-		
+
 	})
 
 </script>
