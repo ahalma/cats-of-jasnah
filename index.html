@@ -174,8 +174,8 @@
 	</style>
 </head>
 <body>
-<div class='back' onclick='set_level(Math.max(0,cur_level-1))'>&larr;</div>
-<div class='forward' onclick='set_level(Math.min(7,cur_level+1))'>&rarr;</div>
+<div class='back'>&larr;</div>
+<div class='forward'>&rarr;</div>
 <h1 onclick='window.location.reload()'>Cats of Jasnah</h1>
 
 <div class="level-display">
@@ -184,16 +184,16 @@
 
 <div class='number-bar no-select'>
 	<div class='number-line'>
-		<span onclick='submit(1)'>1</span>
-		<span onclick='submit(2)'>2</span>
-		<span onclick='submit(3)'>3</span>
-		<span onclick='submit(4)'>4</span>
-		<span onclick='submit(5)'>5</span>
-		<span onclick='submit(6)'>6</span>
-		<span onclick='submit(7)'>7</span>
-		<span onclick='submit(8)'>8</span>
-		<span onclick='submit(9)'>9</span>
-		<span onclick='submit(0)'>0</span>
+		<span data-number='0'>0</span>
+		<span data-number='1'>1</span>
+		<span data-number='2'>2</span>
+		<span data-number='3'>3</span>
+		<span data-number='4'>4</span>
+		<span data-number='5'>5</span>
+		<span data-number='6'>6</span>
+		<span data-number='7'>7</span>
+		<span data-number='8'>8</span>
+		<span data-number='9'>9</span>
 	</div>
 	<div class='desc'>
 		<br>
@@ -209,14 +209,14 @@
 
 	Choose a level to start.<br><br>
 	<ul>
-		<li onclick='set_level(0)'>0. counting</li>
-		<li onclick='set_level(1)'>1. one category</li>
-		<li onclick='set_level(2)'>2. negation</li>
-		<li onclick='set_level(3)'>3. combination</li>
-		<li onclick='set_level(4)'>4. conjunction</li>
-		<li onclick='set_level(5)'>5. negation and conjunction</li>
-		<li onclick='set_level(6)'>6. triple combination</li>
-		<li onclick='set_level(7)'>7. triple conjunction</li>
+		<li data-level='0'>0. counting</li>
+		<li data-level='1'>1. one category</li>
+		<li data-level='2'>2. negation</li>
+		<li data-level='3'>3. combination</li>
+		<li data-level='4'>4. conjunction</li>
+		<li data-level='5'>5. negation and conjunction</li>
+		<li data-level='6'>6. triple combination</li>
+		<li data-level='7'>7. triple conjunction</li>
 	</ul>
 </div>
 <br>
@@ -255,6 +255,7 @@
 <script  src="js/jquery-3.4.1.slim.js"></script>
 
 <script>
+
 	$(document).ready(() => {
 		const COLOR_ATTS = ['red', 'blue', 'yellow']
 		const MOTION_ATTS = ['bouncing', 'spinning']
@@ -402,13 +403,7 @@
 						})
 			}
 		}
-
-		$('body').keyup(function(e){
-
-			if (!/\d/.test(e.key)) return
-			submit(parseInt(e.key))
-		})
-
+		
 		function submit(value) {
 			let answer = $('svg:visible').filter(function(svg){
 				let match = true
@@ -433,6 +428,26 @@
 				})
 			}
 		}
+		
+		// Bind events
+
+		$('body').keyup(function(e){
+			if (!/\d/.test(e.key)) return
+			submit(parseInt(e.key))
+		})
+
+		$('li[data-level]').click(function () {
+			set_level($(this).data('level'))
+		})
+
+		$('span[data-number]').click(function () {
+			submit($(this).data('number'))
+		})
+
+		$('.back').click(() => set_level(Math.max(0,cur_level-1)))
+		$('.forward').click(() => set_level(Math.min(7,cur_level+1)))
+
+		
 	})
 
 </script>
