@@ -1,177 +1,177 @@
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Cats of Jasnah. Teach your 4-year-old logic</title>
-<style>
-body {
-  background: #FFDDEE;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  overflow: hidden;
-}
-html, 
-body {
-    height: 100%;
-}
-button {
-  cursor: pointer;
-  padding: 5px;
-}
-p {
-  font-size: 22px;
-  margin: 0;
-  padding: 1em 0 0 0;
-}
+	<style>
+		body {
+			background: #FFDDEE;
+			font-family: Helvetica, Arial, sans-serif;
+			font-size: 15px;
+			margin: 0;
+			padding: 0;
+			text-align: center;
+			overflow: hidden;
+		}
+		html,
+		body {
+			height: 100%;
+		}
+		button {
+			cursor: pointer;
+			padding: 5px;
+		}
+		p {
+			font-size: 22px;
+			margin: 0;
+			padding: 1em 0 0 0;
+		}
 
-.spinning {
-  animation: 2s spin infinite;
-}
-.hidden {
-  display:none
-}
-svg .face {
-  fill:white
-}
-.smile, .frown {
-  display: none
-}
-.ducks .smile, .ducks .frown{
-  display: inline;
-  stroke: none;
-  fill:orange;
-}
-.mouth {
-  stroke: black;
-}
-.red .face {
-  fill:red
-}
-.blue .face {
-  fill:#8888FF
-}
-.yellow .face {
-  fill:yellow
-}
+		.spinning {
+			animation: 2s spin infinite;
+		}
+		.hidden {
+			display:none
+		}
+		svg .face {
+			fill:white
+		}
+		.smile, .frown {
+			display: none
+		}
+		.ducks .smile, .ducks .frown{
+			display: inline;
+			stroke: none;
+			fill:orange;
+		}
+		.mouth {
+			stroke: black;
+		}
+		.red .face {
+			fill:red
+		}
+		.blue .face {
+			fill:#8888FF
+		}
+		.yellow .face {
+			fill:yellow
+		}
 
 
-@keyframes spin {
-  0% {transform: translate(0, 0) rotate(0deg);}
-  50% {transform: translate(1em, -1em) rotate(360deg);}
-  100% {transform: translate(0, 0) rotate(0deg);}
-}
+		@keyframes spin {
+			0% {transform: translate(0, 0) rotate(0deg);}
+			50% {transform: translate(1em, -1em) rotate(360deg);}
+			100% {transform: translate(0, 0) rotate(0deg);}
+		}
 
-.bouncing {
-	animation: bounce 2s infinite;
-	animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
-}
-@keyframes bounce {
-	0%   { transform: scale(1,1)      translateY(0); }
-	10%  { transform: scale(1.1,.9)   translateY(0); }
-	30%  { transform: scale(.9,1.1)   translateY(-50px); }
-	50%  { transform: scale(1.05,.95) translateY(0); }
-	57%  { transform: scale(1,1)      translateY(-5px); }
-	64%  { transform: scale(1,1)      translateY(0); }
-	100% { transform: scale(1,1)      translateY(0); }
-}
-h1 {
-	font-size: 2em;
-	font-variant: small-caps;
-	text-align: center;
-	text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
-	color: white;
-	margin: 0;
-	cursor:pointer;
-}
-.back, .forward {
-	font-size: 25px;
-	position: fixed;
-	top: 0;
-	width: 25px;
-	cursor: pointer;
-}
-.back {
-	left: 0;
-}
-.forward {
-	right: 0
-}
-.level-display {
-	box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
-	background: #ffeef8;
-	padding: 5px;
-	margin: 0;
-	text-align: center;
-	display: none
-}
-.number-bar {
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	overflow: hidden;
-	height: 20vw;
-	display: none;
-	font-size: 0.5vw;
-}
-.number-bar .desc {
-	font-size: 14px;
-	opacity: 0.7;
-}
-.number-line {
-	
-}
-.number-bar span {
-	cursor: pointer;
-	font-size: 7vw;
-	padding: 0.8vw 2.5vw;
-	box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
-	background: #ffeef8;
-}
-li {
-	padding: 10px 5px;
-	list-style: none;
-	cursor: pointer;
-	margin: 7px;
-	box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
-	border-radius: 5px;
-	background: #ffeef8;
-}
-ul {
-	margin: 0;
-	padding: 0;
-}
-svg {
-	height: 14vmax;
-	width: 14vmax;
-}
-/*some vmax/vh elements get crazy at hi-res, cap their size.*/
-@media screen and (min-width: 1024px) {
-svg {
-	height: 160px;
-	width: 140px;
-}
-.number-bar span {
-	padding: 6px 24px;
-	font-size: 24px;
-}
-.number-bar {
-	height: 75px;
-}
-}
+		.bouncing {
+			animation: bounce 2s infinite;
+			animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+		}
+		@keyframes bounce {
+			0%   { transform: scale(1,1)      translateY(0); }
+			10%  { transform: scale(1.1,.9)   translateY(0); }
+			30%  { transform: scale(.9,1.1)   translateY(-50px); }
+			50%  { transform: scale(1.05,.95) translateY(0); }
+			57%  { transform: scale(1,1)      translateY(-5px); }
+			64%  { transform: scale(1,1)      translateY(0); }
+			100% { transform: scale(1,1)      translateY(0); }
+		}
+		h1 {
+			font-size: 2em;
+			font-variant: small-caps;
+			text-align: center;
+			text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+			color: white;
+			margin: 0;
+			cursor:pointer;
+		}
+		.back, .forward {
+			font-size: 25px;
+			position: fixed;
+			top: 0;
+			width: 25px;
+			cursor: pointer;
+		}
+		.back {
+			left: 0;
+		}
+		.forward {
+			right: 0
+		}
+		.level-display {
+			box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+			background: #ffeef8;
+			padding: 5px;
+			margin: 0;
+			text-align: center;
+			display: none
+		}
+		.number-bar {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			overflow: hidden;
+			height: 20vw;
+			display: none;
+			font-size: 0.5vw;
+		}
+		.number-bar .desc {
+			font-size: 14px;
+			opacity: 0.7;
+		}
+		.number-line {
 
-.noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
+		}
+		.number-bar span {
+			cursor: pointer;
+			font-size: 7vw;
+			padding: 0.8vw 2.5vw;
+			box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+			background: #ffeef8;
+		}
+		li {
+			padding: 10px 5px;
+			list-style: none;
+			cursor: pointer;
+			margin: 7px;
+			box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+			border-radius: 5px;
+			background: #ffeef8;
+		}
+		ul {
+			margin: 0;
+			padding: 0;
+		}
+		svg {
+			height: 14vmax;
+			width: 14vmax;
+		}
+		/*some vmax/vh elements get crazy at hi-res, cap their size.*/
+		@media screen and (min-width: 1024px) {
+			svg {
+				height: 160px;
+				width: 140px;
+			}
+			.number-bar span {
+				padding: 6px 24px;
+				font-size: 24px;
+			}
+			.number-bar {
+				height: 75px;
+			}
+		}
+
+		.noselect {
+			-webkit-touch-callout: none; /* iOS Safari */
+			-webkit-user-select: none; /* Safari */
+			-khtml-user-select: none; /* Konqueror HTML */
+			-moz-user-select: none; /* Old versions of Firefox */
+			-ms-user-select: none; /* Internet Explorer/Edge */
+			user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Opera and Firefox */
-}
-</style>
+		}
+	</style>
 </head>
 <body>
 <div class='back' onclick='set_level(Math.max(0,cur_level-1))'>&larr;</div>
@@ -202,40 +202,40 @@ svg {
 </div>
 <p></p>
 
-<style>#forkongithub a{background:#000;color:#fff;text-decoration:none;font-family:arial,sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover{background:#c11;color:#fff;}#forkongithub a::before,#forkongithub a::after{content:"";width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after{bottom:1px;top:auto;}@media screen and (min-width:800px){#forkongithub{position:absolute;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;z-index:9999;}#forkongithub a{width:200px;position:absolute;top:60px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.8);}}</style><span id="forkongithub"><a href="https://github.com/countable/cats-of-jasnah">Fork me on GitHub</a></span>
+<!--<style>#forkongithub a{background:#000;color:#fff;text-decoration:none;font-family:arial,sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover{background:#c11;color:#fff;}#forkongithub a::before,#forkongithub a::after{content:"";width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after{bottom:1px;top:auto;}@media screen and (min-width:800px){#forkongithub{position:absolute;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;z-index:9999;}#forkongithub a{width:200px;position:absolute;top:60px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.8);}}</style><span id="forkongithub"><a href="https://github.com/countable/cats-of-jasnah">Fork me on GitHub</a></span>-->
 
 <div class='instructions'>
-<b>Instructions:</b><br><br>
+	<b>Instructions:</b><br><br>
 
-Choose a level to start.<br><br>
-<ul>
-<li onclick='set_level(0)'>0. counting</li>
-<li onclick='set_level(1)'>1. one category</li>
-<li onclick='set_level(2)'>2. negation</li>
-<li onclick='set_level(3)'>3. combination</li>
-<li onclick='set_level(4)'>4. conjunction</li>
-<li onclick='set_level(5)'>5. negation and conjunction</li>
-<li onclick='set_level(6)'>6. triple combination</li>
-<li onclick='set_level(7)'>7. triple conjunction</li>
-</ul>
+	Choose a level to start.<br><br>
+	<ul>
+		<li onclick='set_level(0)'>0. counting</li>
+		<li onclick='set_level(1)'>1. one category</li>
+		<li onclick='set_level(2)'>2. negation</li>
+		<li onclick='set_level(3)'>3. combination</li>
+		<li onclick='set_level(4)'>4. conjunction</li>
+		<li onclick='set_level(5)'>5. negation and conjunction</li>
+		<li onclick='set_level(6)'>6. triple combination</li>
+		<li onclick='set_level(7)'>7. triple conjunction</li>
+	</ul>
 </div>
 <br>
 <svg class='hidden' viewbox = "0 0 160 140">
 	<ellipse class='face' cx='70' cy='95' ry='45' rx='55' style='stroke:#ff88dd' />
 	<ellipse cx="45" cy="90" rx="5" ry="7" fill="black"/>
 	<ellipse cx="95" cy="90" rx="5" ry="7" stroke="black" fill="black"/>
-	
+
 	<g id="whiskers" class="whiskers">
-	   <line x1="105" y1="100" x2="135" y2="90" style="stroke: black;"/>
-	   <line x1="105" y1="100" x2="135" y2="110" style="stroke: black;"/>
+		<line x1="105" y1="100" x2="135" y2="90" style="stroke: black;"/>
+		<line x1="105" y1="100" x2="135" y2="110" style="stroke: black;"/>
 	</g>
 	<use xlink:href="#whiskers" transform="scale(-1 1) translate(-140 0)"/>
 	<!-- ears -->
 	<g id="earz" class="ears">
 		<polyline points="108 62,  103 40,  80 51"
-   style="stroke: none; fill: #ff88dd;" />
+				  style="stroke: none; fill: #ff88dd;" />
 	</g>
-   	<use xlink:href="#earz" transform="scale(-1 1) translate(-140 0)"/>
+	<use xlink:href="#earz" transform="scale(-1 1) translate(-140 0)"/>
 
 	<!-- mouth -->
 	<!--<polyline points="35 110, 45 120, 95 120, 105, 110"
@@ -248,197 +248,193 @@ Choose a level to start.<br><br>
 	<!-- nose -->
 	<!--<path d="M 75 90 L 65 90 A 5 10 0  0 0 75 90"
    style="stroke: #ff88dd; fill: #ffcccc"/>-->
-    
-	
 
-	
 </svg>
 
 <script src='js/responsivevoice.js'></script>
 <script  src="js/jquery-3.4.1.slim.js"></script>
 
 <script>
-const COLOR_ATTS = ['red', 'blue', 'yellow']
-const MOTION_ATTS = ['bouncing', 'spinning']
-const ANIMAL_ATTS = ['ducks']
-const ALL_ATTS = COLOR_ATTS.concat(MOTION_ATTS).concat(ANIMAL_ATTS)
-var ATTS;
-var cur_atts = {};
-var cur_level = 0;
-let clue;
+	$(document).ready(() => {
+		const COLOR_ATTS = ['red', 'blue', 'yellow']
+		const MOTION_ATTS = ['bouncing', 'spinning']
+		const ANIMAL_ATTS = ['ducks']
+		const ALL_ATTS = COLOR_ATTS.concat(MOTION_ATTS).concat(ANIMAL_ATTS)
 
-var pick_rand = function(seq) {
-	return seq[Math.floor(Math.random()*seq.length)]
-}
-var set_level = function(level) {
-	// initialization
-    $('.instructions').hide()
-	$('#forkongithub').hide()
-    $('.number-bar').show()
-	$(".level-display").show()
-	
-	$(".level-number").text(level)
-	cur_level = level;
-	$('button').css('background-color','white').eq(level).css('background-color', 'yellow')
-	make_cats()
-}
-// returns whether a given value is to be negated.
-var level_get_negation = function(level) {
-	if (level === 2) return false
-	if (level === 6) return true
-	if (level >= 5) return Math.random() > 0.4
-	return true
-}
-var cats_for_level = function(level) {
-	min_cats = level + 1;
-	max_cats = Math.min(level + 5, 9); // only 9 keys for input
+		let ATTS;
+		let cur_atts = {};
+		let cur_level = 0;
+		let clue;
 
-	return Math.floor(Math.random()*(max_cats+1-min_cats)) + min_cats
-}
-var set_avail_atts = function() {
-	if (cur_level == 0) {
-	    ATTS = []
-	} else if (cur_level <= 2) {
-		ATTS = [pick_rand(ALL_ATTS)]
-	} else if (cur_level <= 5) {
-		ATTS = [
-			pick_rand(COLOR_ATTS),
-			pick_rand(MOTION_ATTS)
-		]
-	} else {
-		ATTS = [
-			pick_rand(COLOR_ATTS),
-			pick_rand(MOTION_ATTS),
-			pick_rand(ANIMAL_ATTS)
-		]
-	}
-}
-const get_level_num_adjectives = function(level, keys) {
-	// get the number of categories used as adjectives, given a list of
-	// categories. More is generally
-	// easier.
-	let pos = Math.floor(Math.random()*(keys.length+1))
-	if (level == 3) pos = keys.length // combination level
-	if (level == 4) pos = 0 // conjunction level
-	if (level < 7) { // all but one an adjective before level 7
-	    if (pos > keys.length - 1) {
-			pos = keys.length - 1
+		function pick_rand(seq) {
+			return seq[Math.floor(Math.random() * seq.length)]
 		}
-	} else {
-		pos = 0
-	}
-	return pos
-}
-const permute_atts = function() {
-	cur_atts = {}
-	for (let i=0;i<ATTS.length;i++) {
-		if (Math.random() > 0.2) {
-			cur_atts[ATTS[i]] = level_get_negation(cur_level)
-		}
-	}
-}
 
-const speak = function(text, opts) {
-	opts = opts || {}
-	$("p").text(text)
-	responsiveVoice.speak(text, "US English Female", opts)
-}
+		function set_level(level) {
+			// initialization
+			$('.instructions').hide()
+			$('#forkongithub').hide()
+			$('.number-bar').show()
+			$(".level-display").show()
 
-var make_cats = function() {
-	set_avail_atts()
-	permute_atts()
-	is_reversed = Math.random() < 0.5
-	let text = "how many "
-	const keys = Object.keys(cur_atts)
-	const prefix_pos = get_level_num_adjectives(cur_level, keys)
-	const prefix_keys = keys.slice(0,prefix_pos)
-	if (prefix_keys.length) {
-		let prefix_words = []
-		for (let att in prefix_keys) {
-			prefix_words.push(
-				(cur_atts[prefix_keys[att]] ? '' : 'not-')
-				+ prefix_keys[att])
+			$(".level-number").text(level)
+			cur_level = level;
+			$('button').css('background-color', 'white').eq(level).css('background-color', 'yellow')
+			make_cats()
 		}
-		text += prefix_words.join(", ") + " "
-		// ducks is just 'duck' when used as an adjective
-		text = text.replace("ducks", "duck")
-	}
-	postfix_keys = keys.slice(prefix_pos)
-	if (postfix_keys.length) {
-		text += "cats are "
-	
-		let conjunctions = []
-		for (let att in postfix_keys) {
-			conjunctions.push(
-				(cur_atts[postfix_keys[att]] ? '' : 'not ')
-				+ postfix_keys[att])
+
+
+		// returns whether a given value is to be negated.
+		function level_get_negation(level) {
+			if (level === 2) return false
+			if (level === 6) return true
+			if (level >= 5) return Math.random() > 0.4
+			return true
 		}
-		console.log(conjunctions)
-		text += conjunctions.join(" and are ")
-	} else {
-		text += "cats are here"
-	}
-	text += "?"
-	clue = text;
-	speak(text)
-	
-  
-    $('svg:gt(0)').remove()
-	var num_cats = cats_for_level(cur_level)
-	for (var i=0;i<num_cats;i++) {
-		$('svg').eq(0).clone().appendTo('body')
-		.each(function(svg){
-		    const $t = $(this)
-		    $(this).removeClass('hidden');
-			
-			for (var att=0;att<ATTS.length;att++) {
-				if (Math.random()<.5) $t.addClass(ATTS[att])
+
+		function cats_for_level(level) {
+			const min_cats = level + 1;
+			const max_cats = Math.min(level + 5, 9); // only 9 keys for input
+
+			return Math.floor(Math.random() * (max_cats + 1 - min_cats)) + min_cats
+		}
+
+		function set_avail_atts() {
+			if (cur_level === 0) {
+				ATTS = []
+			} else if (cur_level <= 2) {
+				ATTS = [pick_rand(ALL_ATTS)]
+			} else if (cur_level <= 5) {
+				ATTS = [
+					pick_rand(COLOR_ATTS),
+					pick_rand(MOTION_ATTS)
+				]
+			} else {
+				ATTS = [
+					pick_rand(COLOR_ATTS),
+					pick_rand(MOTION_ATTS),
+					pick_rand(ANIMAL_ATTS)
+				]
 			}
-		})
-	}
-}
-
-function sound(s) {
-    var snd = new Audio(s+".mp3")
-    snd.play();
-}
-
-$('body').keyup(function(e){
-	
-	if (!/\d/.test(e.key)) return
-	submit(parseInt(e.key))
-})
-
-const submit = function(value) {
-	let answer = $('svg:visible').filter(function(svg){
-		
-		let match = true
-		for (let att in cur_atts) {
-			match = match && 
-			  (cur_atts[att] ? $(this).hasClass(att) : !$(this).hasClass(att))
 		}
-		return match
-	}).length
-	
-	console.log('answer:', answer)
-	if (value === answer) {
-		speak("That's right, " + answer, {
-			onend: function(){
-				make_cats()
-			}})
-	} else {
-		speak("Good try, but that's wrong.", {
-			onend: function() {
-				speak(clue)
+
+		function get_level_num_adjectives(level, keys) {
+			// get the number of categories used as adjectives, given a list of
+			// categories. More is generally
+			// easier.
+			let pos = Math.floor(Math.random()*(keys.length+1))
+			if (level === 3) pos = keys.length // combination level
+			if (level === 4) pos = 0 // conjunction level
+			if (level < 7) { // all but one an adjective before level 7
+				if (pos > keys.length - 1) {
+					pos = keys.length - 1
+				}
+			} else {
+				pos = 0
 			}
+			return pos
+		}
+
+		function permute_atts() {
+			cur_atts = {}
+			for (let i=0;i<ATTS.length;i++) {
+				if (Math.random() > 0.2) {
+					cur_atts[ATTS[i]] = level_get_negation(cur_level)
+				}
+			}
+		}
+
+		function speak(text, opts) {
+			opts = opts || {}
+			$("p").text(text)
+			responsiveVoice.speak(text, "US English Female", opts)
+		}
+
+		function make_cats() {
+			set_avail_atts()
+			permute_atts()
+			let text = "how many "
+			const keys = Object.keys(cur_atts)
+			const prefix_pos = get_level_num_adjectives(cur_level, keys)
+			const prefix_keys = keys.slice(0,prefix_pos)
+			if (prefix_keys.length) {
+				let prefix_words = []
+				for (let att in prefix_keys) {
+					prefix_words.push(
+							(cur_atts[prefix_keys[att]] ? '' : 'not-')
+							+ prefix_keys[att])
+				}
+				text += prefix_words.join(", ") + " "
+				// ducks is just 'duck' when used as an adjective
+				text = text.replace("ducks", "duck")
+			}
+			const postfix_keys = keys.slice(prefix_pos)
+			if (postfix_keys.length) {
+				text += "cats are "
+
+				let conjunctions = []
+				for (let att in postfix_keys) {
+					conjunctions.push(
+							(cur_atts[postfix_keys[att]] ? '' : 'not ')
+							+ postfix_keys[att])
+				}
+				console.log(conjunctions)
+				text += conjunctions.join(" and are ")
+			} else {
+				text += "cats are here"
+			}
+			text += "?"
+			clue = text;
+			speak(text)
+
+
+			$('svg:gt(0)').remove()
+			const num_cats = cats_for_level(cur_level);
+			for (let i=0; i<num_cats; i++) {
+				$('svg').eq(0).clone().appendTo('body')
+						.each(function(svg){
+							const $t = $(this)
+							$(this).removeClass('hidden');
+
+							for (let att=0; att<ATTS.length; att++) {
+								if (Math.random()<.5) $t.addClass(ATTS[att])
+							}
+						})
+			}
+		}
+
+		$('body').keyup(function(e){
+
+			if (!/\d/.test(e.key)) return
+			submit(parseInt(e.key))
 		})
-	}
 
-}
+		function submit(value) {
+			let answer = $('svg:visible').filter(function(svg){
+				let match = true
+				for (let att in cur_atts) {
+					match = match &&
+							(cur_atts[att] ? $(this).hasClass(att) : !$(this).hasClass(att))
+				}
+				return match
+			}).length
 
+			console.log('answer:', answer)
+			if (value === answer) {
+				speak("That's right, " + answer, {
+					onend: function(){
+						make_cats()
+					}})
+			} else {
+				speak("Good try, but that's wrong.", {
+					onend: function() {
+						speak(clue)
+					}
+				})
+			}
+		}
+	})
 
 </script>
-
 </body>
-
 </html>
