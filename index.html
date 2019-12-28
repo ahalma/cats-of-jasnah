@@ -291,7 +291,7 @@ var level_get_negation = function(level) {
 }
 var cats_for_level = function(level) {
 	min_cats = level + 1;
-	max_cats = level + 5;
+	max_cats = Math.min(level + 5, 9); // only 9 keys for input
 
 	return Math.floor(Math.random()*(max_cats+1-min_cats)) + min_cats
 }
