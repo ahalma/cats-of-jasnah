@@ -21,7 +21,14 @@
 			cursor: pointer;
 			padding: 5px;
 		}
+
+		.challenge {
+			margin-top: 40px;
+			cursor: pointer;
+		}
+
 		.answerTip {
+			color: #ad93a0;
 			font-size: 22px;
 			margin: 0;
 			padding: 1em 0 0 0;
@@ -117,6 +124,7 @@
 		.level-display {
 			box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
 			background: #ffeef8;
+			color: #ad93a0;
 			padding: 5px;
 			margin: 0;
 			text-align: center;
@@ -152,6 +160,10 @@
 
 		.number-bar span.selected {
 			background: white;
+		}
+
+		.number-bar span.selected.wrong {
+			background: #d6baca;
 		}
 
 		li {
@@ -195,6 +207,41 @@
 			user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Opera and Firefox */
 		}
+
+		.waggle {
+			animation: waggle 1s 3s forwards ease-out;
+		}
+
+		@keyframes waggle {
+			0% {
+				transform: none;
+			}
+			50% {
+				transform: rotateZ(-20deg) scale(1.5);
+			}
+			60% {
+				transform: rotateZ(25deg) scale(1.5);
+			}
+			67.5% {
+				transform: rotateZ(-15deg) scale(1.5);
+			}
+			75% {
+				transform: rotateZ(15deg) scale(1.5);
+			}
+			82.5% {
+				transform: rotateZ(-12deg) scale(1.5);
+			}
+			85% {
+				transform: rotateZ(0) scale(1.5);
+			}
+			100% {
+				transform: rotateZ(0) scale(1);
+			}
+		}
+
+		.start-now, .start-now:after {
+			animation-delay: 0s;
+		}
 	</style>
 </head>
 <body>
@@ -204,7 +251,7 @@
 <div class="level-display">
 	<div class='back'>&larr;</div>
 	<span class="level-message">LEVEL</span>: <span class='level-number' style="margin-right: 30px"></span>
-	👍 <span class='right-count'>0</span> | 👎 <span class='wrong-count'>0</span>
+	<div class="thumb-up" style="display:inline-block">👍</div> <span class='right-count'>0</span> | <div class="thumb-down" style="display:inline-block">👎</div> <span class='wrong-count'>0</span>
 	<div class='forward'>&rarr;</div>
 </div>
 
@@ -423,6 +470,7 @@
 			$(".level-number").text(level)
 			cur_level = level;
 			$('button').css('background-color', 'white').eq(level).css('background-color', 'yellow')
+			$('span[data-number]').removeClass('wrong');
 			make_cats()
 		}
 
@@ -547,7 +595,8 @@
 		}
 
 		function submit(value) {
-			$('span[data-number='+value+']').addClass('selected');
+			let selectedNumber = $('span[data-number='+value+']');
+			selectedNumber.addClass('selected');
 
 			let answer = $('svg:visible').filter(function(svg){
 				let match = true
@@ -562,21 +611,25 @@
 			if (value === answer) {
 				if(firstAttempt) {
 					rightCount++;
+					$('.thumb-up').addClass('waggle start-now');
 				}
 				$('.right-count').text(rightCount);
 				speak(messages[lang].right + " " + answer +"!", {
 					onend: function(){
-						$('span[data-number]').removeClass('selected');
+						$('.thumb-up').removeClass('waggle start-now');
+						$('span[data-number]').removeClass('selected').removeClass('wrong');
 						make_cats()
 					}})
 			} else {
 				if(firstAttempt){
 					wrongCount++;
+					$('.thumb-down').addClass('waggle start-now');
 				}
 				$('.wrong-count').text(wrongCount);
 				speak(messages[lang].wrong, {
 					onend: function() {
-						$('span[data-number]').removeClass('selected');
+						selectedNumber.addClass('wrong');
+						$('.thumb-down').removeClass('waggle start-now');
 						speak(clue)
 					}
 				})
