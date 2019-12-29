@@ -136,7 +136,7 @@
 			left: 0;
 			right: 0;
 			overflow: hidden;
-			height: 20vw;
+			height: 25vw;
 			display: none;
 			font-size: 0.5vw;
 		}
@@ -155,7 +155,7 @@
 			box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
 			background: #ffeef8;
 			border-radius: 5px;
-			margin: 0 2px;
+			margin: 0 1px;
 		}
 
 		.number-bar span.selected {
@@ -474,7 +474,6 @@
 			$(".level-number").text(level)
 			cur_level = level;
 			$('button').css('background-color', 'white').eq(level).css('background-color', 'yellow')
-			$('span[data-number]').removeClass('wrong');
 			make_cats()
 		}
 
@@ -546,7 +545,10 @@
 		}
 
 		function make_cats() {
+			// reset
 			firstAttempt = true;
+			$('span[data-number]').removeClass('selected').removeClass('wrong');
+
 			set_avail_atts()
 			permute_atts()
 			let text = messages[lang].base;
@@ -622,7 +624,6 @@
 				speak(messages[lang].right + " " + answer +"!", {
 					onend: function(){
 						$('.thumb-up').removeClass('waggle start-now');
-						$('span[data-number]').removeClass('selected').removeClass('wrong');
 						make_cats()
 					}})
 			} else {
