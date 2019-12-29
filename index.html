@@ -206,9 +206,9 @@
 <!--<style>#forkongithub a{background:#000;color:#fff;text-decoration:none;font-family:arial,sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover{background:#c11;color:#fff;}#forkongithub a::before,#forkongithub a::after{content:"";width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after{bottom:1px;top:auto;}@media screen and (min-width:800px){#forkongithub{position:absolute;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;z-index:9999;}#forkongithub a{width:200px;position:absolute;top:60px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.8);}}</style><span id="forkongithub"><a href="https://github.com/countable/cats-of-jasnah">Fork me on GitHub</a></span>-->
 
 <div class='instructions'>
-	<b>Instructions:</b><br><br>
-
-	Choose a level to start.<br><br>
+	<p class="choose-level-message">
+		Choose a level to start.
+	</p>
 	<ul>
 		<li data-level='0'>0. counting</li>
 		<li data-level='1'>1. one category</li>
@@ -261,16 +261,17 @@
 			'title': 'Cats of Jasnah',
 			'titleFull': 'Cats of Jasnah. Teach your 4-year-old logic',
 			'voice' : 'US English Female',
+			'chooseLevel' : 'Choose a level to start.',
 			'answerTip' : 'To answer questions, tap the numbers above or just use your keyboard.',
 			'level' : 'level',
-			'level0' : '0. counting',
-			'level1' : '1. one category',
-			'level2' : '2. negation',
-			'level3' : '3. combination',
-			'level4' : '4. conjunction',
-			'level5' : '5. negation and conjunction',
-			'level6' : '6. triple combination',
-			'level7' : '7. triple conjunction',
+			'level0' : '0. Counting',
+			'level1' : '1. One category',
+			'level2' : '2. Negation',
+			'level3' : '3. Combination',
+			'level4' : '4. Conjunction',
+			'level5' : '5. Negation and conjunction',
+			'level6' : '6. Triple combination',
+			'level7' : '7. Triple conjunction',
 			'right' : 'That\'s right:',
 			'wrong' : 'Good try, but that\'s wrong.',
 
@@ -290,17 +291,18 @@
 		'es' : {
 			'title': 'Gatos de Jasnah',
 			'titleFull': 'Gatos de Jasnah. Enseña lógica a tu niño de 4 años',
+			'chooseLevel' : 'Elige un nivel para comenzar.',
 			'voice' : 'Spanish Female',
 			'answerTip' : 'Elija un número arriba o use su teclado.',
-			'level' : 'level',
-			'level0' : '0. contando',
-			'level1' : '1. una categoría',
-			'level2' : '2. negación',
-			'level3' : '3. combinación',
-			'level4' : '4. conjunción',
-			'level5' : '5. negación y conjunción',
-			'level6' : '6. combinación triple',
-			'level7' : '7. triple conjunción',
+			'level' : 'nivel',
+			'level0' : '0. Contando',
+			'level1' : '1. Una categoría',
+			'level2' : '2. Negación',
+			'level3' : '3. Combinación',
+			'level4' : '4. Conjunción',
+			'level5' : '5. Negación y conjunción',
+			'level6' : '6. Combinación triple',
+			'level7' : '7. Triple conjunción',
 			'right' : 'Eso es correcto:',
 			'wrong' : 'Buen intento, pero eso está mal.',
 
@@ -321,16 +323,17 @@
 			'title': 'Kattenlogica',
 			'titleFull': 'Kattenlogica. Leer je kleuter logica (fork of "Cats of Jasnah")',
 			'voice' : 'Dutch Female',
+			'chooseLevel' : 'Kies een level om te beginnen.',
 			'answerTip' : 'Kies een nummer hierboven of gebruik je toetsenbord.',
 			'level' : 'level',
-			'level0' : '0. tellen',
-			'level1' : '1. één kenmerk',
-			'level2' : '2. ontkenning',
-			'level3' : '3. combinatie',
-			'level4' : '4. voegwoorden',
-			'level5' : '5. ontkenning en voegwoorden',
-			'level6' : '6. driedubbele combinaties',
-			'level7' : '7. driedubbele voegwoorden',
+			'level0' : '0. Tellen',
+			'level1' : '1. Één kenmerk',
+			'level2' : '2. Ontkenning',
+			'level3' : '3. Combinatie',
+			'level4' : '4. Voegwoorden',
+			'level5' : '5. Ontkenning en voegwoorden',
+			'level6' : '6. Drievoudige combinaties',
+			'level7' : '7. Drievoudige voegwoorden',
 			'right' : 'Dat is goed:',
 			'wrong' : 'Jammer, dat is fout.',
 
@@ -529,10 +532,12 @@
 		}
 
 		// Internationalization: set messages
+
 		$('.answerTip').text(messages[lang].answerTip)
 		$('.title').text(messages[lang].title)
 		$('title').text(messages[lang].titleFull)
 		$('.level-message').text(messages[lang].level)
+		$('.choose-level-message').text(messages[lang].chooseLevel)
 
 		$('li[data-level]').each(function () {
 			let level = $(this).data('level');
