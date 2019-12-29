@@ -150,8 +150,8 @@
 			margin: 0 2px;
 		}
 
-		.number-bar span .selected {
-			background: #ffeef8;
+		.number-bar span.selected {
+			background: white;
 		}
 
 		li {
@@ -540,6 +540,8 @@
 		}
 
 		function submit(value) {
+			$('span[data-number='+value+']').addClass('selected');
+
 			let answer = $('svg:visible').filter(function(svg){
 				let match = true
 				for (let att in cur_atts) {
@@ -553,11 +555,13 @@
 			if (value === answer) {
 				speak(messages[lang].right + " " + answer +"!", {
 					onend: function(){
+						$('span[data-number]').removeClass('selected');
 						make_cats()
 					}})
 			} else {
 				speak(messages[lang].wrong, {
 					onend: function() {
+						$('span[data-number]').removeClass('selected');
 						speak(clue)
 					}
 				})
