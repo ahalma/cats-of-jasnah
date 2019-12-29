@@ -673,6 +673,7 @@
 		$('.back').click(() => set_level(Math.max(0,cur_level-1)))
 		$('.forward').click(() => set_level(Math.min(7,cur_level+1)))
 
+		$('.challenge').click(function(){speak($(this).text())})
 
 	})
 
