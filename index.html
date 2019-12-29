@@ -57,6 +57,22 @@
 			fill:#ffff73
 		}
 
+		.sleepeyes {
+			display: none;
+		}
+		.sleep .sleepeyes {
+			fill:white;
+			display: inline;
+		}
+		.red .sleepeyes {
+			fill:#ff5858
+		}
+		.blue .sleepeyes {
+			fill:#b2ccff
+		}
+		.yellow .sleepeyes {
+			fill:#ffff73
+		}
 
 		@keyframes spin {
 			0% {transform: translate(0, 0) rotate(0deg);}
@@ -223,8 +239,15 @@
 <br>
 <svg class='hidden' viewbox = "0 0 160 140">
 	<ellipse class='face' cx='70' cy='95' ry='45' rx='55' style='stroke-width:3px;stroke:#ff88dd' />
+
+	<!-- eyes -->
 	<ellipse cx="45" cy="90" rx="5" ry="7" fill="black"/>
-	<ellipse cx="95" cy="90" rx="5" ry="7" stroke="black" fill="black"/>
+	<ellipse cx="95" cy="90" rx="5" ry="7" fill="black"/>
+
+	<!-- sleepeyes -->
+	<ellipse class="sleepeyes" cx="45" cy="87" rx="5" ry="7" fill="transparent"/>
+	<ellipse class="sleepeyes" cx="95" cy="87" rx="5" ry="7" fill="transparent"/>
+
 
 	<g id="whiskers" class="whiskers">
 		<line x1="105" y1="100" x2="135" y2="93" style="stroke: black;"/>
@@ -287,6 +310,7 @@
 			'bouncing': ['_ bouncing', 'are _ bouncing'],
 			'spinning': ['_ spinning', 'are _ spinning'],
 			'ducks': ['_ duck', 'are _ ducks'],
+			'sleep': ['_ sleeping', 'are _ sleeping'],
 		},
 		'es' : {
 			'title': 'Gatos de Jasnah',
@@ -318,6 +342,7 @@
 			'bouncing': ['_ saltarines', '_ están saltando'],
 			'spinning': ['_ giratorios', '_ están girando'],
 			'ducks': ['_ como los patos', '_ son patos?'],
+			'sleep': ['_ dormidos', '_ están durmiendo'],
 		},
 		'nl' : {
 			'title': 'Kattenlogica',
@@ -349,6 +374,7 @@
 			'bouncing': ['_ springende', 'springen _'],
 			'spinning': ['_ draaiende', 'draaien _'],
 			'ducks': ['_ eenden', 'zijn _ eendjes'],
+			'sleep': ['_ slapende', 'slapen _'],
 		}
 	}
 
@@ -362,7 +388,7 @@
 	$(document).ready(() => {
 		const COLOR_ATTS = ['red', 'blue', 'yellow']
 		const MOTION_ATTS = ['bouncing', 'spinning']
-		const ANIMAL_ATTS = ['ducks']
+		const ANIMAL_ATTS = ['sleep', 'ducks']
 		const ALL_ATTS = COLOR_ATTS.concat(MOTION_ATTS).concat(ANIMAL_ATTS)
 
 		let ATTS;
