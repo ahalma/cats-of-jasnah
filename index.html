@@ -99,21 +99,20 @@
 			text-align: center;
 			text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
 			color: white;
-			margin: 0;
 			cursor:pointer;
+			margin: 10px;
 		}
 		.back, .forward {
 			font-size: 25px;
-			position: fixed;
-			top: 0;
 			width: 25px;
 			cursor: pointer;
+			margin-top: -8px;
 		}
 		.back {
-			left: 0;
+			float: left;
 		}
 		.forward {
-			right: 0
+			float: right;
 		}
 		.level-display {
 			box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
@@ -139,6 +138,7 @@
 		}
 		.number-line {
 			margin-bottom: 20px;
+			margin-top: 10px;
 		}
 		.number-bar span {
 			cursor: pointer;
@@ -146,7 +146,14 @@
 			padding: 0.8vw 2.5vw;
 			box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
 			background: #ffeef8;
+			border-radius: 5px;
+			margin: 0 2px;
 		}
+
+		.number-bar span .selected {
+			background: #ffeef8;
+		}
+
 		li {
 			padding: 10px 5px;
 			list-style: none;
@@ -175,7 +182,7 @@
 				font-size: 24px;
 			}
 			.number-bar {
-				height: 75px;
+				height: 110px
 			}
 		}
 
@@ -388,7 +395,7 @@
 	$(document).ready(() => {
 		const COLOR_ATTS = ['red', 'blue', 'yellow']
 		const MOTION_ATTS = ['bouncing', 'spinning']
-		const ANIMAL_ATTS = ['sleep', 'ducks']
+		const ANIMAL_ATTS = ['sleep'/*, 'ducks'*/]
 		const ALL_ATTS = COLOR_ATTS.concat(MOTION_ATTS).concat(ANIMAL_ATTS)
 
 		let ATTS;
@@ -562,7 +569,7 @@
 		$('.answerTip').text(messages[lang].answerTip)
 		$('.title').text(messages[lang].title)
 		$('title').text(messages[lang].titleFull)
-		$('.level-message').text(messages[lang].level)
+		$('.level-message').text(messages[lang].level.toUpperCase())
 		$('.choose-level-message').text(messages[lang].chooseLevel)
 
 		$('li[data-level]').each(function () {
