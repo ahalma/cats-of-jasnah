@@ -203,7 +203,8 @@
 
 <div class="level-display">
 	<div class='back'>&larr;</div>
-	<span class="level-message">LEVEL</span>: <span class='level-number'></span>
+	<span class="level-message">LEVEL</span>: <span class='level-number' style="margin-right: 30px"></span>
+	👍 <span class='right-count'>0</span> | 👎 <span class='wrong-count'>0</span>
 	<div class='forward'>&rarr;</div>
 </div>
 
@@ -403,11 +404,16 @@
 		let cur_level = 0;
 		let clue;
 
+		let rightCount = 0, wrongCount = 0;
+		let firstAttempt = true;
+
 		function pick_rand(seq) {
 			return seq[Math.floor(Math.random() * seq.length)]
 		}
 
 		function set_level(level) {
+			rightCount = 0; wrongCount = 0;
+			firstAttempt = true;
 			// initialization
 			$('.instructions').hide()
 			$('#forkongithub').hide()
@@ -488,6 +494,7 @@
 		}
 
 		function make_cats() {
+			firstAttempt = true;
 			set_avail_atts()
 			permute_atts()
 			let text = messages[lang].base;
@@ -553,12 +560,20 @@
 
 			console.log('answer:', answer)
 			if (value === answer) {
+				if(firstAttempt) {
+					rightCount++;
+				}
+				$('.right-count').text(rightCount);
 				speak(messages[lang].right + " " + answer +"!", {
 					onend: function(){
 						$('span[data-number]').removeClass('selected');
 						make_cats()
 					}})
 			} else {
+				if(firstAttempt){
+					wrongCount++;
+				}
+				$('.wrong-count').text(wrongCount);
 				speak(messages[lang].wrong, {
 					onend: function() {
 						$('span[data-number]').removeClass('selected');
@@ -566,6 +581,7 @@
 					}
 				})
 			}
+			firstAttempt = false;
 		}
 
 		// Internationalization: set messages
