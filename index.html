@@ -459,8 +459,12 @@
 		}
 
 		function set_level(level) {
+			// reset scores
 			rightCount = 0; wrongCount = 0;
+			$('.right-count').text(rightCount);
+			$('.wrong-count').text(wrongCount);
 			firstAttempt = true;
+
 			// initialization
 			$('.instructions').hide()
 			$('#forkongithub').hide()
@@ -608,12 +612,13 @@
 			}).length
 
 			console.log('answer:', answer)
+
 			if (value === answer) {
 				if(firstAttempt) {
 					rightCount++;
+					$('.right-count').text(rightCount);
 					$('.thumb-up').addClass('waggle start-now');
 				}
-				$('.right-count').text(rightCount);
 				speak(messages[lang].right + " " + answer +"!", {
 					onend: function(){
 						$('.thumb-up').removeClass('waggle start-now');
@@ -623,9 +628,9 @@
 			} else {
 				if(firstAttempt){
 					wrongCount++;
+					$('.wrong-count').text(wrongCount);
 					$('.thumb-down').addClass('waggle start-now');
 				}
-				$('.wrong-count').text(wrongCount);
 				speak(messages[lang].wrong, {
 					onend: function() {
 						selectedNumber.addClass('wrong');
